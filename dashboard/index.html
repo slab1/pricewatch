@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PriceWatch — Nigeria daily price &amp; FX history</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="brand">
+    <h1>PriceWatch</h1>
+    <p class="tagline">Daily Nigeria price &amp; FX history — free public view. API access for researchers.</p>
+  </div>
+  <div class="header-meta">
+    <span id="clock" class="clock">—</span>
+    <span id="refresh-indicator" class="refresh" title="Auto-refreshes every 60 seconds">live</span>
+  </div>
+</header>
+
+<main>
+  <section id="overview">
+    <h2>Latest readings <span id="demo-badge" class="badge-demo" hidden>includes demo data</span></h2>
+    <div id="cards" class="cards" role="list"></div>
+    <p id="cards-empty" class="empty" hidden>No readings yet — collection starts at 7am daily.</p>
+  </section>
+
+  <section id="detail" hidden>
+    <div class="detail-head">
+      <h2 id="detail-title">—</h2>
+      <div id="ranges" class="ranges">
+        <button data-days="30">30d</button>
+        <button data-days="90" class="active">90d</button>
+        <button data-days="365">1y</button>
+        <button data-days="0">all</button>
+      </div>
+    </div>
+    <p id="detail-unit" class="muted"></p>
+    <div class="chart-wrap">
+      <canvas id="detail-chart"></canvas>
+      <div id="chart-fallback" hidden></div>
+    </div>
+    <p id="detail-legend" class="muted"></p>
+  </section>
+
+  <section id="table-section">
+    <h2>All series — latest per source</h2>
+    <table id="latest-table">
+      <thead><tr><th>Item</th><th>Source</th><th class="num">Value</th><th>Unit</th><th>Date</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </section>
+</main>
+
+<footer>
+  <p>Data: public sources only · one request per source per day · Not investment advice ·
+     API docs at <a href="/docs">/docs</a></p>
+  <p class="muted">Prices collected daily; some official series are monthly (NBS).</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

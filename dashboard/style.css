@@ -1,0 +1,90 @@
+:root {
+  --bg: #0d1117;
+  --panel: #161b22;
+  --border: #2d333b;
+  --text: #e6edf3;
+  --muted: #8b949e;
+  --accent: #58a6ff;
+  --green: #3fb950;
+  --red: #f85149;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+main { max-width: 1200px; margin: 0 auto; padding: 0 20px 40px; }
+
+.site-header {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  max-width: 1200px; margin: 0 auto; padding: 24px 20px 12px;
+  border-bottom: 1px solid var(--border);
+}
+.site-header h1 { margin: 0; font-size: 26px; letter-spacing: -0.02em; }
+.tagline { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
+.header-meta { text-align: right; }
+.clock { font-family: var(--mono); font-size: 13px; color: var(--muted); display: block; }
+.refresh { font-size: 12px; color: var(--green); }
+.refresh.stale { color: var(--muted); }
+
+h2 { font-size: 16px; font-weight: 600; margin: 28px 0 12px; }
+.muted { color: var(--muted); font-size: 13px; }
+.empty { color: var(--muted); font-style: italic; padding: 16px 0; }
+.badge-demo {
+  font-size: 11px; font-weight: 500; color: #d29922;
+  border: 1px solid #d2992255; border-radius: 10px; padding: 1px 8px; margin-left: 8px;
+  vertical-align: middle;
+}
+
+/* cards */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+.card {
+  background: var(--panel); border: 1px solid var(--border); border-radius: 8px;
+  padding: 14px 16px; cursor: pointer; transition: border-color .15s;
+}
+.card:hover, .card:focus { border-color: var(--accent); outline: none; }
+.card .item-name { font-size: 13px; color: var(--muted); }
+.card .value { font-family: var(--mono); font-size: 22px; font-weight: 600; margin: 4px 0 2px; }
+.card .unit { font-size: 11px; color: var(--muted); }
+.card .row { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; }
+.card .delta { font-family: var(--mono); font-size: 12px; font-weight: 600; }
+.card .delta.up { color: var(--green); }
+.card .delta.down { color: var(--red); }
+.card .delta.flat { color: var(--muted); }
+.card .date { font-size: 11px; color: var(--muted); }
+.card svg.spark { display: block; margin-top: 10px; }
+
+/* detail chart */
+.detail-head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+.detail-head h2 { margin: 0; }
+.ranges button {
+  background: var(--panel); color: var(--muted); border: 1px solid var(--border);
+  border-radius: 6px; padding: 4px 12px; margin-left: 6px; font-size: 13px; cursor: pointer;
+}
+.ranges button.active { color: var(--text); border-color: var(--accent); }
+.chart-wrap { position: relative; min-height: 320px; background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 12px; }
+#chart-fallback table { width: 100%; border-collapse: collapse; font-size: 13px; }
+#chart-fallback th, #chart-fallback td { padding: 4px 8px; border-bottom: 1px solid var(--border); text-align: left; }
+#chart-fallback td.num { text-align: right; font-family: var(--mono); }
+
+/* table */
+#latest-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+#latest-table th, #latest-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); text-align: left; }
+#latest-table th { color: var(--muted); font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
+#latest-table td.num, #latest-table th.num { text-align: right; font-family: var(--mono); }
+
+footer {
+  max-width: 1200px; margin: 0 auto; padding: 16px 20px 32px;
+  border-top: 1px solid var(--border); color: var(--muted); font-size: 12px;
+}
+footer a { color: var(--accent); }
+
+@media (max-width: 640px) {
+  .site-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .header-meta { text-align: left; }
+  .cards { grid-template-columns: 1fr 1fr; }
+  .card .value { font-size: 18px; }
+}
